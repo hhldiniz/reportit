@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<content>
+	
+	<image src="" />
+	<text type="parameterized">
+		Atenciosamente
+		_________________________
+		<blank type="name" />
+	</text>
+
+</content>

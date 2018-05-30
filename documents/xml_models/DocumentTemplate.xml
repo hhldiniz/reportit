@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<document>
+
+	<meta>
+		<item name="">value</item>
+	</meta>
+
+
+	<header>
+		
+		<yield id="header" />
+
+	</header>
+
+
+	<body>
+		
+		<yield id="body" />
+
+	</body>
+
+
+	<footer>
+		
+		<yield id="footer" />
+
+	</footer>
+
+</document>
