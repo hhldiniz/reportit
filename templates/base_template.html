@@ -2,10 +2,26 @@
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
+    {% block styles%}
+    <link rel="stylesheet" href={{url_for('static', filename="css/materialize.min.css")}}>
+    {%endblock%}
+    {%block scripts%}
+    <script src={{url_for('static', filename="js/materialize.min.js")}}></script>
+    {%endblock%}
     <title>{{title}}</title>
 </head>
 <body>
-    {%block content%}
-    {%endblock%}
+{%block content%}
+<nav>
+    <div class="nav-wrapper">
+        <a href="#" class="brand-logo">Report It</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="/">Início</a></li>
+            <li><a href="#">Relatórios</a></li>
+            <li><a href="#">Sobre</a></li>
+        </ul>
+    </div>
+</nav>
+{%endblock%}
 </body>
 </html>
