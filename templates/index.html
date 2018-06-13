@@ -1,11 +1,25 @@
 {%extends "base_template.html"%}
 {%block styles%}
     {{super()}}
+    <link rel="stylesheet" href={{url_for('static', filename="css/index.css")}}>
 {%endblock%}
 {%block scripts%}
     {{super()}}
 {%endblock%}
 {%block content%}
     {{super()}}
-
+    <div class="row s12" id="presentation">
+        <div class="col s12 offset-s6">
+            <div class="row s12">
+                <div class="col s12">
+                    <a class="waves-effect waves-light btn">Cadastre-se</a>
+                </div>
+            </div>
+            <div class="row s12">
+                <div class="col s12">
+                    <a class="waves-effect waves-light btn">Entre</a>
+                </div>
+            </div>
+        </div>
+    </div>
 {%endblock%}
