@@ -2,7 +2,7 @@ from pymongo import MongoClient
 
 
 class DBController:
-    def __init__(self, host="localhost", dbname="test", dbuser="", password="", port=27017):
+    def __init__(self, host="localhost", dbname="reportit", dbuser="", password="", port=27017):
         self.__host = host
         self.__dbname = dbname
         self.__dbuser = dbuser
