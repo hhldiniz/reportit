@@ -23,7 +23,7 @@ app.add_url_rule("/signup", methods=["GET", "POST"],
 
 @app.route("/logout")
 def logout():
-    index_view.logout()
+    return index_view.logout()
 
 
 if __name__ == '__main__':

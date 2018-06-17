@@ -32,13 +32,23 @@
 </nav>
 {%if user == None%}
 <div id="modal1" class="modal">
-    <div class="modal-content">
-        <h4>Modal Header</h4>
-        <p>A bunch of text</p>
-    </div>
-    <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Entrar</a>
-    </div>
+    <form method="post" action="/">
+        <div class="modal-content">
+            <h4>Login</h4>
+            <div class="input-field">
+                <label for="username">Usuário</label>
+                <input type="text" id="username" name="username">
+            </div>
+            <div class="input-field">
+                <label for="password">Senha</label>
+                <input type="password" id="password" name="password">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="modal-close waves-effect waves-green btn-flat" type="submit">Entrar</button>
+        </div>
+    </form>
+
 </div>
 {%endif%}
 {%endblock%}
