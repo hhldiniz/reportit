@@ -9,6 +9,48 @@
 {%endblock%}
 {%block content%}
 {{super()}}
+<div class="row">
+  <div class="col s12 m6 offset-l3">
+    <div class="card white darken-1">
+      <div class="card-content black-text">
+        <div class="row s12">
+          <div class="col">
+            <span class="card-title" id="report_input_title">Adicionar Relatório Completo</span>
+          </div>
+          <div class="col offset-l3">
+            <div class="switch">
+              <label>
+                Completo
+                <input type="checkbox" id="report_type">
+                <span class="lever"></span>
+                Parte
+              </label>
+            </div>
+          </div>
+        </div>
+        <form method="post" action="/reports">
+          <div class="input-field">
+            <label for="report_input">Texto</label>
+            <textarea class="materialize-textarea" id="report_input" name="report_input"></textarea>
+          </div>
+          <div class="input-field">
+            <select name="report_type_selection" id="report_type_selection">
+              <option value="" disabled selected>Tipo da parte</option>
+              <option value="1">Cabeçalho</option>
+              <option value="2">Corpo</option>
+              <option value="3">Rodapé</option>
+            </select>
+            <label>Tipo da Parte do Relatório</label>
+          </div>
+          <div class="card-action">
+            <a href="#">Exportar</a>
+            <a href="#" id="save_btn">Salvar</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="fixed-action-btn">
   <a class="btn-floating btn-large red">
     <i class="large material-icons">add</i>
@@ -17,4 +59,5 @@
     <li><a class="btn-floating red"><i class="material-icons">insert_drive_file</i></a></li>
     <li><a class="btn-floating yellow darken-1"><i class="material-icons">broken_image</i></a></li>
   </ul>
-</div>{%endblock%}
+</div>
+{%endblock%}
