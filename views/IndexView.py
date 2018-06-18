@@ -1,7 +1,8 @@
 from flask import session, request, redirect
-
+import json
 from models.User import User
 from views.BaseView import BaseView
+from utils.JSONEncoderUtil import JSONEncoderUtil
 
 
 class IndexView(BaseView):
@@ -11,7 +12,7 @@ class IndexView(BaseView):
 
     def get(self, **context):
         try:
-            context.__setitem__("user", session["user"])
+            context.__setitem__("user", json.loads(session["user"]))
         except KeyError:
             context.__setitem__("user", None)
         return super().get(**context)
@@ -19,14 +20,17 @@ class IndexView(BaseView):
     def post(self, **context):
         username = request.form["username"]
         password = request.form["password"]
-        user = User.get({"username": username, "password": password})
-        if user.__len__() > 0:
-            context.__setitem__("user", user)
-            context.__setitem__("msg", None)
-            session.__setitem__("user", user)
-        else:
-            context.__setitem__("msg", "Usuário ou senha incorretos!")
-        return super().post(**context)
+        try:
+            user = User.get({"username": username, "password": password})[0]
+            if user.__len__() > 0:
+                context.__setitem__("user", user)
+                context.__setitem__("msg", None)
+                session.__setitem__("user", JSONEncoderUtil().encode(user))
+            else:
+                context.__setitem__("msg", "Usuário ou senha incorretos!")
+            return super().post(**context)
+        except IndexError:
+            return redirect("/error/login")
 
     @staticmethod
     def logout():

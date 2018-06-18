@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href={{url_for('static', filename="css/error.css")}}>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href={{url_for('static', filename="css/materialize.min.css")}}>
+</head>
+<body>
+    {%block content%}
+    <div class="row s12">
+        <div class="col offset-s5">
+            <img class="responsive_img" width="300" src={{url_for('static', filename="img/false-2061131_1280.png")}}>
+        </div>
+    </div>
+    <div class="row s12">
+        <div class="col offset-s5">
+            <div class="msg">
+                {{msg}}
+            </div>
+        </div>
+    </div>
+    {%endblock%}
+</body>
+</html>

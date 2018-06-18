@@ -1,5 +1,5 @@
 from flask import request, session
-
+import json
 from models.User import User
 from views.BaseView import BaseView
 
@@ -22,7 +22,7 @@ class SignupView(BaseView):
         if password == password_confirm:
             user.save()
             context.__setitem__("msg", "Cadastro realizado com sucesso!")
-            session.__setitem__("user", user)
+            session.__setitem__("user", json.dumps(user))
         else:
             context.__setitem__("msg", "Erro ao realizar o cadastro")
         return super().post(**context)
