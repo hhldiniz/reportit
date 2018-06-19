@@ -39,8 +39,8 @@ class ReportsView(BaseView):
         else:
             from models.Report import Report
             report = Report()
-            report.set_user(session["user"])
-            report.set_content(report_input)
+        report.set_user(session["user"])
+        report.set_content(report_input)
         if report.save() is not None:
             return json.dumps({"result": True})
         else:
