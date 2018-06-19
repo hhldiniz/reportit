@@ -14,21 +14,27 @@ $(document).ready(function(){
           $("#report_type_selection").parent().parent().hide();
       }
    });
-   $("#save_btn").click(function(){
-      let data = new FormData();
-      data.append("report_input", $("#report_input").val());
+   $("#save_btn").on("click",function(){
+      let formData = {
+         "report_input": $("#report_input").val(),
+          "report_type_selection": null
+      };
       let report_type_selection = $("#report_type_selection");
       if($("#report_type").prop("checked") && report_type_selection.val() !== "")
-         data.append("#report_type_selection", report_type_selection.val());
+         formData["report_type_selection"]=report_type_selection.val();
       $.ajax({
          url:"/reports",
          method: "POST",
-         data: data,
+         data: formData,
          success: data=>{
-
+            data = JSON.parse(data);
+            if(data["result"])
+            {
+               window.location.reload();
+            }
          },
          error: err=>{
-
+            console.error(err);
          }
       });
    });

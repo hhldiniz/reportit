@@ -38,6 +38,7 @@ class Report:
 
     def save(self):
         db_controller = DBController()
+        db_controller.connect()
         insert_result = db_controller.insert("reports",
                                              {
                                                  "name": self.__name,

@@ -14,21 +14,22 @@ class ReportsView(BaseView):
         return super().get(**context)
 
     def post(self, **context):
-        try:
-            report_type_selection = request.form["report_type_selection"]
-        except KeyError:
-            report_type_selection = None
+        print(request.form)
+        report_type_selection = request.form["report_type_selection"]
         report_input = request.form["report_input"]
         if report_type_selection is not None:
             if report_type_selection == "1":
                 from models.ReportHeader import ReportHeader
                 report = ReportHeader()
+                report.set_collection("report_header")
             elif report_type_selection == "2":
                 from models.ReportBody import ReportBody
                 report = ReportBody()
+                report.set_collection("report_body")
             else:
                 from models.ReportFooter import ReportFooter
                 report = ReportFooter()
+                report.set_collection("report_footer")
         else:
             from models.Report import Report
             report = Report()
