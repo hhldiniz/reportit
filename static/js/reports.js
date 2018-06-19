@@ -46,6 +46,7 @@ $(document).ready(function(){
         let report_content_text;
         let report_part_content_text;
         let report_input = $("#report_input");
+        let report_part_content_type;
         try {
             report_content_text = $(this).find(".report_content").text();
         }catch (exception) {
@@ -53,13 +54,25 @@ $(document).ready(function(){
         }
         try {
            report_part_content_text = $(this).find(".report_part_content").text();
+           report_part_content_type = $(this).find(".report_part_content_type").text();
         }catch (exception) {
             report_part_content_text = "";
         }
         if(report_part_content_text !== "")
         {
             let current_text = report_input.text();
-            current_text+=report_part_content_text;
+            console.log(report_part_content_type);
+            switch (report_part_content_type)
+            {
+                case "header":
+                    current_text = report_part_content_text+=current_text;
+                    break;
+                case "body":
+                    break;
+                case "footer":
+                    current_text+=report_part_content_text;
+                    break;
+            }
             report_input.text(current_text);
         }
         if(report_content_text !== "")
