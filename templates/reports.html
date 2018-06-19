@@ -29,7 +29,7 @@
           </div>
         </div>
         <form method="post" action="/reports">
-          <div class="input-field">
+          <div class="input-field tooltipped" data-position="top" data-tooltip="Você pode user os itens abaixo para compor seu relatório">
             <label for="report_input">Texto</label>
             <textarea class="materialize-textarea" id="report_input" name="report_input"></textarea>
           </div>
@@ -50,6 +50,44 @@
       </div>
     </div>
   </div>
+</div>
+
+<h6>Partes de Relatório</h6>
+<div class="carousel">
+  {%for part in report_parts%}
+  {%for report in part%}
+  <a class="carousel-item">
+    <div class="row">
+      <div class="col s12 m5">
+        <div class="card-panel teal">
+        <span class="white-text">
+          <b>Conteúdo:</b><br>
+          <div class="report_part_content">{{report.content}}</div><br>
+          <b>Tipo:{{report.type}}</b>
+        </span>
+        </div>
+      </div>
+    </div>
+  </a>
+  {%endfor%}
+  {%endfor%}
+</div>
+<h6>Relatórios Completos</h6>
+<div class="carousel">
+  {%for report in reports%}
+  <a class="carousel-item">
+    <div class="row">
+      <div class="col s12 m5">
+        <div class="card-panel teal">
+        <span class="white-text">
+          <b>Conteúdo:</b><br>
+          <div class="report_content">{{report.content}}</div><br>
+        </span>
+        </div>
+      </div>
+    </div>
+  </a>
+  {%endfor%}
 </div>
 <div class="fixed-action-btn">
   <a class="btn-floating btn-large red">
